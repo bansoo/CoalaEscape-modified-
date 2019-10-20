@@ -145,6 +145,7 @@ room.book2.onClick = function() {
 
 room.book3.onClick = function() {
 	showImageViewer("종이.png", "책3.txt")
+	
 
 }
 
@@ -162,8 +163,8 @@ room.door.onClick = function() {
 }
 
 room.keypad.onClick = function() {
-	printMessage("중앙대학교 개교기념일은?")
-	showKeypad("alphabet", "ABCDE" , function(){ 
+	printMessage("책에 단서가 있을까 없을까?")
+	showKeypad("alphabet", "BLEED" , function(){ 
 		room.door.unlock() 
 		printMessage("잠금장치가 열리는 소리가 들렸다.")
 	 })
@@ -266,8 +267,8 @@ room2.cavinet.onOpen = function() {
 
 
 room2.keypad.onClick = function() {
-	printMessage("책에 단서가 있지 않을까?")
-	showKeypad("number", "1111" , function(){ 
+	printMessage("310관 뚜레쥬르 아이스아메리카노 가격은?")
+	showKeypad("number", "1200" , function(){ 
 		room2.cavinet.unlock() 
 		printMessage("잠금장치가 열리는 소리가 들렸다.")
 	 })
@@ -289,25 +290,26 @@ room3.text1.onClick = function(){
 }
 
 room3.rock.onClick = function(){
-	if(game.getHandItem() != room3.bomb){
-		printMessage("꿈쩍도하지않는다.")
-	}
-	else if(game.getHandItem() == room3.bomb){
+	if(game.getHandItem() == room.bomb){
 		printMessage("폭탄을 설치했다.")
-		room3.bomb = null
 		room3.bomb2.show()
+	}
+	else {
+		printMessage("꿈쩍도하지 않는다.")
+		
+		
 	}
 
 	
 }
 room3.bomb2.onClick = function(){
-	if(game.getHandItem() != room3.gifok){
+	if(game.getHandItem() != room.gifok){
 		printMessage("어떻게 터트리지?")
 	}
-	else if(game.getHandItem() == room3.gifok){
+	else if(game.getHandItem() == room.gifok){
 		printMessage("멀리떨어져서 터트리자")
 
-		room3.gifok = null
+	
 		room3.gifok2.show()
 	}
 
@@ -316,10 +318,10 @@ room3.bomb2.onClick = function(){
 
 room3.gifok2.onClick = function(){
 	if (room3.gifok2.isLocked()){
-		printMessage("기폭장치에 잠금이 걸려있다!")
+		printMessage("취약한 비밀번호가 설정되어있는것 같다.")
 	
 	
-	showKeypad("telephone", "111111" , function(){ 
+	showKeypad("telephone", "123456" , function(){ 
 		room3.gifok2.unlock() 
 		printMessage("기폭장치의 잠금이 풀렸다.")
 	 })
@@ -363,13 +365,13 @@ room2.sap.onClick = function(){
 }
 
 room.gifok.onClick = function() {
-	room.gifok.hide()
-	room3.gifok.pick()
+	room.gifok.pick()
+	//room3.gifok.pick()
 }
 
 room.bomb.onClick = function() {
-	room.bomb.hide()
-	room3.bomb.pick()
+	room.bomb.pick()
+	//room3.bomb.pick()
 }
 room.shelf2.onClick = function() {
 	room.shelf2.pick()
@@ -404,4 +406,4 @@ room.doublenamu2.hide()
 //room.shelf5.hide()
 count = 0
 game.start(room) 
-printMessage("방탈출에 오신 것을 환영합니다!") 
+printMessage("(대충 탈출해보라는 뜻)") 
